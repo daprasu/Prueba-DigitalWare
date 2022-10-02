@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PruebaDigitalware.Core.Dtos
 {
-    internal class VentaDetalleDto
+    public class VentaDetalleDto
     {
         public int Id { get; set; }
         public int? ProductoId { get; set; }

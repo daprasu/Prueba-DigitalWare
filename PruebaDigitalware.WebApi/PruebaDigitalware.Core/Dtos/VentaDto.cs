@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PruebaDigitalware.Core.Dtos
 {
-    internal class VentaDto
+    public class VentaDto
     {
         public VentaDto()
         {

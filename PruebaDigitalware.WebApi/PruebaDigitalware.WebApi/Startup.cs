@@ -1,3 +1,4 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -11,6 +12,7 @@ using Microsoft.OpenApi.Models;
 using PruebaDigitalware.Core.Interfaces;
 using PruebaDigitalware.Infrastructure.Data;
 using PruebaDigitalware.Infrastructure.Repositories;
+using PruebaDigitalware.WebApi.AutoMapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -48,8 +50,18 @@ namespace PruebaDigitalware.WebApi
             services.AddDbContext<IsaBDContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("PruebaDigitalware")));
 
-            // Inyecion dependencias
-            services.AddTransient<IPostRepository, PostRepository>();
+            // Inyeccion dependencias
+            services.AddTransient<IClienteRepository, ClienteRepository>();
+
+
+            // Configuracion Automapper
+            var mapperConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new Automapper());
+            });
+
+            IMapper mapper = mapperConfig.CreateMapper();
+            services.AddSingleton(mapper);
 
             services.AddSwaggerGen(c =>
             {
