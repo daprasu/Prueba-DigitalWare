@@ -1,22 +1,15 @@
 using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using PruebaDigitalware.Core.Interfaces;
 using PruebaDigitalware.Infrastructure.Data;
 using PruebaDigitalware.Infrastructure.Repositories;
 using PruebaDigitalware.WebApi.AutoMapper;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace PruebaDigitalware.WebApi
 {
@@ -52,6 +45,9 @@ namespace PruebaDigitalware.WebApi
 
             // Inyeccion dependencias
             services.AddTransient<IClienteRepository, ClienteRepository>();
+            services.AddTransient<IProductoRepository, ProductoRepository>();
+            services.AddTransient<IVentaRepository, VentaRepository>();
+            services.AddTransient<IVentaDetalleRepository, VentaDetalleRepository>();
 
 
             // Configuracion Automapper

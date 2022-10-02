@@ -35,6 +35,7 @@ namespace PruebaDigitalware.Infrastructure.Data
         {
             modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
 
+            #region Definicion Cliente
             modelBuilder.Entity<Cliente>(entity =>
             {
                 entity.ToTable("Cliente");
@@ -44,7 +45,9 @@ namespace PruebaDigitalware.Infrastructure.Data
                     .HasMaxLength(256)
                     .IsUnicode(false);
             });
+            #endregion
 
+            #region Definicion Producto
             modelBuilder.Entity<Producto>(entity =>
             {
                 entity.ToTable("Producto");
@@ -54,7 +57,9 @@ namespace PruebaDigitalware.Infrastructure.Data
                     .HasMaxLength(256)
                     .IsUnicode(false);
             });
+            #endregion
 
+            #region Definicion VentaDetalle
             modelBuilder.Entity<VentaDetalle>(entity =>
             {
                 entity.ToTable("VentaDetalle");
@@ -69,7 +74,9 @@ namespace PruebaDigitalware.Infrastructure.Data
                     .HasForeignKey(d => d.VentaId)
                     .HasConstraintName("FK_VentaDetalle_Venta");
             });
+            #endregion
 
+            #region Definicion Venta
             modelBuilder.Entity<Venta>(entity =>
             {
                 entity.ToTable("Venta");
@@ -81,6 +88,7 @@ namespace PruebaDigitalware.Infrastructure.Data
                     .HasForeignKey(d => d.ClienteId)
                     .HasConstraintName("FK_Venta_Cliente");
             });
+            #endregion
 
             OnModelCreatingPartial(modelBuilder);
         }
