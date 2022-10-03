@@ -4,15 +4,6 @@ import 'devextreme/data/odata/store';
 import { ClienteModel } from 'src/app/core/models/cliente.model';
 import { ResponseModel } from 'src/app/core/models/response.model';
 import { HttpClientService } from 'src/app/core/services/httpclient.service';
-import {
-  DxDataGridModule,
-  DxDataGridComponent,
-  DxSpeedDialActionModule,
-  DxSelectBoxModule,} from 'devextreme-angular';
-import { BrowserModule } from '@angular/platform-browser';
-import {
-  NgModule, ViewChild, enableProdMode,
-} from '@angular/core';
 
 @Component({
   templateUrl: 'cliente.component.html'

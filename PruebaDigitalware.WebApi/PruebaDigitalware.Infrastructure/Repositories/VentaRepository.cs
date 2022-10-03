@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using PruebaDigitalware.Core.Dtos;
 using PruebaDigitalware.Core.Entities;
 using PruebaDigitalware.Core.Interfaces;
