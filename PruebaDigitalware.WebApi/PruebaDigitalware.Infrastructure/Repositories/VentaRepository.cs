@@ -13,7 +13,7 @@ namespace PruebaDigitalware.Infrastructure.Repositories
 {
     public class VentaRepository : IVentaRepository
     {
-        #region inyenccion dependencias
+        #region Constructor
         protected IsaBDContext context;
         private readonly IMapper mapper;
         public VentaRepository(IsaBDContext _context, IMapper _mapper)
@@ -29,6 +29,9 @@ namespace PruebaDigitalware.Infrastructure.Repositories
             try
             {
                 var lista = context.Venta
+                 .Include(x => x.Cliente)
+                 .Include(x => x.VentaDetalles)
+                 .ThenInclude(x=> x.Producto)
                 .OrderBy(x => x.FechaVenta)
                 .ToList();
 
@@ -113,6 +116,6 @@ namespace PruebaDigitalware.Infrastructure.Repositories
         }
         #endregion
 
-      
+
     }
 }

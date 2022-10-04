@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using PruebaDigitalware.Core.Dtos;
 using PruebaDigitalware.Core.Entities;
 using PruebaDigitalware.Core.Interfaces;
@@ -28,6 +29,7 @@ namespace PruebaDigitalware.Infrastructure.Repositories
             try
             {
                 var lista = context.VentaDetalles
+                .Include(x => x.Producto)
                 .ToList();
 
                 response.ObjetoResultado = mapper.Map<List<VentaDetalleDto>>(lista);

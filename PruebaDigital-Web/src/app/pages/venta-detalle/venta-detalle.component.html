@@ -1,9 +1,4 @@
-<h2 class="content-block">Clientes Afiliados</h2>
-
-<span class="content-block">A continuacion encontraremos los clientes que se encuentra afiliadoas a nuestra base de datos</span>
-<br>
-
-<div class="center">
+<div class="center-60">
 <dx-data-grid class="dx-card wide-card"
   [dataSource]="dataSource"
   [showBorders]="false"
@@ -13,7 +8,7 @@
   (onSaved)="destinoRegistro($event)">
   
 
-  <dxo-paging [pageSize]="5"></dxo-paging>
+  <dxo-paging [pageSize]="10"></dxo-paging>
   <dxo-editing mode="row" [allowUpdating]="true" [allowDeleting]="true" [useIcons]="true" [allowAdding]="true"></dxo-editing>
   <dxo-pager [showPageSizeSelector]="true" [showInfo]="true"></dxo-pager>
   <dxo-filter-row [visible]="true"></dxo-filter-row>
@@ -21,17 +16,18 @@
     dataField="id"
     [width]="120"
     caption="Id"
-    [visible]= "false">
+    [visible]= "false"
+    >
   </dxi-column>
   <dxi-column
-    dataField="nombre"
+    dataField="producto.nombreProducto"
     [width]="150"
-    caption="Nombre Cliente">
+    caption="Producto">
   </dxi-column>
   <dxi-column
-    dataField="edad"
+    dataField="cantidadProducto"
     [width]="150"
-    caption="Edad cliente"
+    caption="Cantidad Comprada"
     alignment = "center">
   </dxi-column>
   <dxi-column

@@ -8,6 +8,7 @@ import { ClienteComponent } from './pages/cliente/cliente.component';
 import { DxDataGridModule, DxFormModule } from 'devextreme-angular';
 import { VentaComponent } from './pages/venta/venta.component';
 import { ProductoComponent } from './pages/producto/producto.component';
+import { VentaDetalleComponent } from './pages/venta-detalle/venta-detalle.component';
 
 const routes: Routes = [
   {
@@ -23,6 +24,11 @@ const routes: Routes = [
   {
     path: 'producto',
     component: ProductoComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
+    path: 'venta-detalle',
+    component: VentaDetalleComponent,
     canActivate: [ AuthGuardService ]
   },
   {
@@ -70,7 +76,8 @@ const routes: Routes = [
     ProfileComponent,
     ClienteComponent,
     VentaComponent,
-    ProductoComponent
+    ProductoComponent,
+    VentaDetalleComponent
   ]
 })
 export class AppRoutingModule { }

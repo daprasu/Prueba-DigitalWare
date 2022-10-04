@@ -3,15 +3,14 @@
 <span class="content-block">A continuacion encontraremos los productos registrados en nuestra base de datos</span>
 <br>
 
-<div>
+<div class="center-60">
 <dx-data-grid class="dx-card wide-card"
   [dataSource]="dataSource"
   [showBorders]="false"
-  [columnAutoWidth]="true"
-  [columnHidingEnabled]="true"
+  [columnAutoWidth]="false"
+  [columnHidingEnabled]="false"
   (onRowRemoving)="eliminarRegistro($event.data.id)"
-  (onSaved)="editarRegistro($event)"
-  (onRowPrepared)="agregarRegistro($event)">
+  (onSaved)="destinoRegistro($event)">
   
 
   <dxo-paging [pageSize]="10"></dxo-paging>
@@ -20,24 +19,28 @@
   <dxo-filter-row [visible]="true"></dxo-filter-row>
   <dxi-column
     dataField="id"
-    [width]="90"
-    [allowEditing]="false">
+    [width]="120"
+    caption="Id"
+    [visible]= "false"
+    >
   </dxi-column>
   <dxi-column
     dataField="nombreProducto"
     [width]="150"
-    caption="Nombre Del Producto">
+    caption="Nombre">
   </dxi-column>
   <dxi-column
     dataField="existencia"
     [width]="150"
-    caption="Existencia en base de datos">
+    caption="Existencias"
+    alignment = "center">
   </dxi-column>
   <dxi-column
     dataField="precio"
     [width]="150"
     format = "currency"
-    caption="Valor del Producto">
+    caption="Valor del Producto"
+    alignment = "center">
   </dxi-column>
   <dxi-column
     [width]="150"

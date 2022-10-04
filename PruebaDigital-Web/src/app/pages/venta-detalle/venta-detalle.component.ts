@@ -6,10 +6,10 @@ import { ResponseModel } from 'src/app/core/models/response.model';
 import { HttpClientService } from 'src/app/core/services/httpclient.service';
 
 @Component({
-  templateUrl: 'producto.component.html'
+  templateUrl: 'venta-detalle.component.html'
 })
 
-export class ProductoComponent {
+export class VentaDetalleComponent {
   dataSource: any;
   producto: ProductoModel;
   response: ResponseModel = new ResponseModel;
@@ -30,20 +30,20 @@ export class ProductoComponent {
   }
 
   async consultar() {
-    this.response = await this.httpClientService.consultar('/Producto');
+    this.response = await this.httpClientService.consultar('/VentaDetalle');
     this.dataSource = this.response.objetoResultado;
   }
 
   async eliminarRegistro(idRegistroEliminado: any) {
-    this.response = await this.httpClientService.eliminar('/Producto', idRegistroEliminado);
+    // this.response = await this.httpClientService.eliminar('/Producto', idRegistroEliminado);
   }
 
   destinoRegistro(destino : any){
-    if(destino.changes[0].type == "insert"){
-      this.agregarRegistro(destino);
-    }else if(destino.changes[0].type == "update"){
-      this.editarRegistro(destino);
-    }
+    // if(destino.changes[0].type == "insert"){
+    //   this.agregarRegistro(destino);
+    // }else if(destino.changes[0].type == "update"){
+    //   this.editarRegistro(destino);
+    // }
   }
 
   async editarRegistro(registroEditado : any) {

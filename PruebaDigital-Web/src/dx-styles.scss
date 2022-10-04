@@ -55,10 +55,22 @@ html, body {
 
 .dx-card.wide-card {
   border-radius: 0;
-  margin-left: 30%;
+  margin-left: 0;
   margin-right: 0;
   border-right: 0;
   border-left: 0;
+}
+
+.center-60{
+  margin: auto;
+  width: 60%;
+  padding: 10px;
+}
+
+.center {
+  margin: auto;
+  width: 50%;
+  padding: 10px;
 }
 
 .with-footer > .dx-scrollable-wrapper >

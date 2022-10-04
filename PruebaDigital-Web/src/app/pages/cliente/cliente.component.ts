@@ -13,6 +13,7 @@ export class ClienteComponent {
   dataSource: any;
   cliente: ClienteModel;
   response: ResponseModel = new ResponseModel;
+  newRow : any
 
   constructor(
     private httpClientService: HttpClientService,
@@ -38,22 +39,27 @@ export class ClienteComponent {
     this.response = await this.httpClientService.eliminar('/Cliente', idRegistroEliminado);
   }
 
+  destinoRegistro(destino : any){
+    if(destino.changes[0].type == "insert"){
+      this.agregarRegistro(destino);
+    }else if(destino.changes[0].type == "update"){
+      this.editarRegistro(destino);
+    }
+  }
+
   async editarRegistro(registroEditado : any) {
     this.cliente = registroEditado.changes[0].data;
     this.response = await this.httpClientService.editar('/Cliente', this.cliente);
   }
 
   async agregarRegistro(registroCreado : any){
-    if(registroCreado.data.id == undefined && registroCreado.rowIndex != 0){
-      this.cliente = {
-        Id: 0,
-        Nombre: registroCreado.data.nombre,
-        Edad: registroCreado.data.edad
-      } as ClienteModel
-      this.response = await this.httpClientService.crear('/Cliente', this.cliente);
-      this.consultar();
-    }
-    
+    this.cliente = {
+      Id: 0,
+      Nombre: registroCreado.changes[0].data.nombre,
+      Edad: registroCreado.changes[0].data.edad
+    } as ClienteModel
+    this.response = await this.httpClientService.crear('/Cliente', this.cliente);
+    this.consultar();
   }
 
 

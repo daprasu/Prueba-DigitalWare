@@ -1,70 +1,59 @@
-<h2 class="content-block">Tasks</h2>
+<h2 class="content-block">Ventas Registradas</h2>
 
+<span class="content-block">A continuacion encontraremos los Ventas Realizadas</span>
+<br>
+
+<div class="center">
 <dx-data-grid class="dx-card wide-card"
   [dataSource]="dataSource"
   [showBorders]="false"
-  [focusedRowEnabled]="true"
-  [focusedRowIndex]="0"
-  [columnAutoWidth]="true"
-  [columnHidingEnabled]="true">
+  [columnAutoWidth]="false"
+  [columnHidingEnabled]="false"
+  (onRowRemoving)="eliminarRegistro($event.data.id)"
+  (onSaved)="destinoRegistro($event)">
+  
 
-  <dxo-paging [pageSize]="10"></dxo-paging>
+  <dxo-paging [pageSize]="5"></dxo-paging>
+  <dxo-editing mode="row" [allowUpdating]="true" [allowDeleting]="true" [useIcons]="true" [allowAdding]="true"></dxo-editing>
   <dxo-pager [showPageSizeSelector]="true" [showInfo]="true"></dxo-pager>
   <dxo-filter-row [visible]="true"></dxo-filter-row>
-
   <dxi-column
-    dataField="Task_ID"
-    [width]="90"
-    [hidingPriority]="2">
+    dataField="id"
+    [width]="120"
+    caption="Id"
+    [visible]= "false">
   </dxi-column>
   <dxi-column
-    dataField="Task_Subject"
-    [width]="190"
-    caption="Subject"
-    [hidingPriority]="8">
-  </dxi-column>
-  <dxi-column
-    dataField="Task_Status"
-    caption="Status"
-    [hidingPriority]="6">
-  </dxi-column>
-  <dxi-column
-    dataField="Task_Priority"
-    caption="Priority"
-    [hidingPriority]="5">
-    <dxo-lookup
-      [dataSource]="priority"
-      valueExpr="value"
-      displayExpr="name">
-    </dxo-lookup>
-  </dxi-column>
-  <dxi-column
-    dataField="ResponsibleEmployee.Employee_Full_Name"
-    caption="Assigned To"
-    [allowSorting]="false"
-    [hidingPriority]="7">
-  </dxi-column>
-  <dxi-column
-    dataField="Task_Start_Date"
-    caption="Start Date"
+    dataField="fechaVenta"
+    [width]="120"
+    caption="Fecha Venta"
     dataType="date"
-    [hidingPriority]="3">
+    format = "dd/MM/yyyy">
   </dxi-column>
   <dxi-column
-    dataField="Task_Due_Date"
-    caption="Due Date"
-    dataType="date"
-    [hidingPriority]="4">
+    dataField="totalVenta"
+    [width]="150"
+    caption="Valor de la Venta"
+    format = "currency"
+    alignment = "center">
   </dxi-column>
   <dxi-column
-    dataField="Task_Priority"
-    caption="Priority"
-    name="Priority"
-    [hidingPriority]="1">
+    dataField="cliente.nombre"
+    [width]="120"
+    caption="Comprador">
   </dxi-column>
   <dxi-column
-    dataField="Task_Completion"
-    caption="Completion"
-    [hidingPriority]="0">
+    [width]="150"
+    caption="Accion"
+    type="buttons">
+    <dxi-button name="edit" hint="Editar"></dxi-button>
+    <dxi-button name="delete" hint="Eliminar"></dxi-button>
+    <dxi-button
+      hint="Detalle"
+      icon="info"
+      [onClick]="detalleRegistro"
+    ></dxi-button>
   </dxi-column>
 </dx-data-grid>
+</div>
+

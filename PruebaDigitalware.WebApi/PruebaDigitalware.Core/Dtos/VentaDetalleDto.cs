@@ -1,4 +1,6 @@
-﻿namespace PruebaDigitalware.Core.Dtos
+﻿using System.Text.Json.Serialization;
+
+namespace PruebaDigitalware.Core.Dtos
 {
     public class VentaDetalleDto
     {
@@ -8,6 +10,7 @@
         public int? VentaId { get; set; }
 
         public virtual ProductoDto Producto { get; set; }
+        [JsonIgnore]
         public virtual VentaDto Venta { get; set; }
     }
 }
