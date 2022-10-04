@@ -13,7 +13,7 @@ namespace PruebaDigitalware.Infrastructure.Repositories
 {
     public class VentaDetalleRepository : IVentaDetalleRepository
     {
-        #region inyenccion dependencias
+        #region Constructor
         protected IsaBDContext context;
         private readonly IMapper mapper;
         public VentaDetalleRepository(IsaBDContext _context, IMapper _mapper)
@@ -30,6 +30,30 @@ namespace PruebaDigitalware.Infrastructure.Repositories
             {
                 var lista = context.VentaDetalles
                 .Include(x => x.Producto)
+                .ToList();
+
+                response.ObjetoResultado = mapper.Map<List<VentaDetalleDto>>(lista);
+                response.Exitoso = true;
+            }
+            catch (Exception e)
+            {
+                response.Mensaje = e.Message;
+                response.Exitoso = false;
+                response.ObjetoResultado = new List<VentaDetalleDto>();
+            }
+
+            return response;
+        }
+        #endregion
+
+        #region Consultar
+        public ResponseQuery<List<VentaDetalleDto>> ConsultarPorVentaId(int ventaId, ResponseQuery<List<VentaDetalleDto>> response)
+        {
+            try
+            {
+                var lista = context.VentaDetalles
+                .Include(x => x.Producto)
+                .Where(x=> x.VentaId == ventaId)
                 .ToList();
 
                 response.ObjetoResultado = mapper.Map<List<VentaDetalleDto>>(lista);

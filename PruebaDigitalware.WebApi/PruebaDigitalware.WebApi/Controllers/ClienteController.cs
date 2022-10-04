@@ -10,7 +10,7 @@ namespace PruebaDigitalware.WebApi.Controllers
     [ApiController]
     public class ClienteController : ControllerBase
     {
-        #region Inyeccion Dependencias 
+        #region Constructor
         readonly IClienteRepository clienteRepository;
         public ClienteController(IClienteRepository _clienteRepository)
         {

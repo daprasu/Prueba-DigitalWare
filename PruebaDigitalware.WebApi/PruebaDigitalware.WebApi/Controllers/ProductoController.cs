@@ -10,7 +10,7 @@ namespace PruebaDigitalware.WebApi.Controllers
     [ApiController]
     public class ProductoController : ControllerBase
     {
-        #region Inyeccion Dependencias 
+        #region Constructor
         readonly IProductoRepository productoRepository;
         public ProductoController(IProductoRepository _productoRepository)
         {

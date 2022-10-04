@@ -10,7 +10,7 @@ namespace PruebaDigitalware.WebApi.Controllers
     [ApiController]
     public class VentaController : ControllerBase
     {
-        #region Inyeccion Dependencias 
+        #region Constructor
         readonly IVentaRepository ventaRepository;
         public VentaController(IVentaRepository _ventaRepository)
         {

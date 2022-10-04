@@ -7,6 +7,7 @@ namespace PruebaDigitalware.Core.Interfaces
     public interface IVentaDetalleRepository
     {
         public ResponseQuery<List<VentaDetalleDto>> Consultar(ResponseQuery<List<VentaDetalleDto>> response);
+        public ResponseQuery<List<VentaDetalleDto>> ConsultarPorVentaId(int ventaId, ResponseQuery<List<VentaDetalleDto>> response);
         public ResponseRegister Crear(VentaDetalleDto input, ResponseRegister response);
         public ResponseRegister Editar(VentaDetalleDto input, ResponseRegister response);
         ResponseRegister Eliminar(int id, ResponseRegister response);

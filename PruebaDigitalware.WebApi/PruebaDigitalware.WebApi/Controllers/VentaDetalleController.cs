@@ -10,7 +10,7 @@ namespace PruebaDigitalware.WebApi.Controllers
     [ApiController]
     public class VentaDetalleController : ControllerBase
     {
-        #region Inyeccion Dependencias 
+        #region Constructor 
         readonly IVentaDetalleRepository ventaDetalleRepository;
         public VentaDetalleController(IVentaDetalleRepository _ventaDetalleRepository)
         {
@@ -25,6 +25,17 @@ namespace PruebaDigitalware.WebApi.Controllers
         {
             ResponseQuery<List<VentaDetalleDto>> response = new ResponseQuery<List<VentaDetalleDto>>();
             ventaDetalleRepository.Consultar(response);
+            return Ok(response);
+        }
+        #endregion
+
+        #region Consultar por VentaId
+        [HttpGet]
+        [Route("consultarporventaId")]
+        public IActionResult ConsultarPorVentaId(int ventaId)
+        {
+            ResponseQuery<List<VentaDetalleDto>> response = new ResponseQuery<List<VentaDetalleDto>>();
+            ventaDetalleRepository.ConsultarPorVentaId(ventaId, response);
             return Ok(response);
         }
         #endregion

@@ -18,10 +18,5 @@ export const navigation = [
     text: 'Ventas',
     path: '/venta',
     icon: 'cart'
-  },
-  {
-    text: 'prueba',
-    path: '/venta-detalle',
-    icon: 'cart'
   }
 ];

@@ -52,17 +52,14 @@ export class ProductoComponent {
   }
 
   async agregarRegistro(registroCreado : any){
-    if(registroCreado.data.id == undefined && registroCreado.rowIndex != 0){
-      this.producto = {
-        Id: 0,
-        NombreProducto: registroCreado.changes[0].data.nombreProducto,
-        Existencia: registroCreado.changes[0].data.existencia,
-        Precio: registroCreado.changes[0].data.precio
-      } as ProductoModel
-      this.response = await this.httpClientService.crear('/Producto', this.producto);
-      this.consultar();
-    }
-    
+    this.producto = {
+      Id: 0,
+      NombreProducto: registroCreado.changes[0].data.nombreProducto,
+      Existencia: registroCreado.changes[0].data.existencia,
+      Precio: registroCreado.changes[0].data.precio
+    } as ProductoModel
+    this.response = await this.httpClientService.crear('/Producto', this.producto);
+    this.consultar();    
   }
 
 

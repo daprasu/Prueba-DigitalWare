@@ -22,6 +22,14 @@ export class HttpClientService {
         return response;
     }
 
+    consultarPorVentaId(endpoint: string, value : any): Promise<object> {
+        let response = this._http.get(`${environment.backend}${endpoint}/consultarporventaId?ventaId=${value}`)
+            .toPromise()
+            .then(result => result as ResponseModel)
+            .catch(this.handleError);
+        return response;
+    }
+
     editar(endpoint: string, value : any): Promise<object> {
         let response = this._http.put(`${environment.backend}${endpoint}/editar`, value)
             .toPromise()
